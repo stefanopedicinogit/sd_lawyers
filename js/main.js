@@ -152,3 +152,20 @@ $('.venobox').venobox({
 });     
     
 })(jQuery);
+
+
+const menuItems = document.querySelectorAll('.main-menu li a');
+const sections = document.querySelectorAll('section');
+
+window.addEventListener('scroll', () => {
+  const scrollPosition = window.scrollY;
+  menuItems.forEach((menuItem) => {
+    const sectionId = menuItem.getAttribute('href');
+    const section = document.querySelector(sectionId);
+    if (section.offsetTop <= scrollPosition + 100 && section.offsetTop + section.offsetHeight > scrollPosition + 100) {
+      menuItem.parentNode.classList.add('active');
+    } else {
+      menuItem.parentNode.classList.remove('active');
+    }
+  });
+});
